@@ -1,0 +1,76 @@
+{
+    "type": "project",
+    "name": "mcaskill/wp-jazz",
+    "license": "MIT",
+    "description": "A modern WordPress project boilerplate.",
+    "keywords": [
+        "jazz", "composer", "wordpress", "wp", "wp-config", "boilerplate"
+    ],
+    "support": {
+        "issues": "https://github.com/mcaskill/wp-jazz/issues"
+    },
+    "authors": [
+        {
+            "name": "Chauncey McAskill",
+            "email": "chauncey@mcaskill.ca",
+            "homepage": "https://mcaskill.ca"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "composer/installers": "^1.8",
+        "vlucas/phpdotenv": "^4.1",
+        "oscarotero/env": "^1.2",
+        "roots/wordpress": "~5.4.0",
+        "roots/wp-config": "^1.0",
+        "roots/wp-password-bcrypt": "^1.0"
+    },
+    "require-dev": {
+        "automattic/phpcs-neutron-ruleset": "^3.2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "extra": {
+        "installer-paths": {
+            "public/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "public/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "public/themes/{$name}/": [
+                "type:wordpress-theme"
+            ],
+            "public/{$name}/": [
+                "type:wordpress-dropin"
+            ]
+        },
+        "wordpress-install-dir": "public/wordpress"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "tests": [
+            "phpcs"
+        ]
+    }
+}

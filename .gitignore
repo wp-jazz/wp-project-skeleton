@@ -1,0 +1,62 @@
+# WordPress
+# ----------------
+
+/public/*
+/public/mu-plugins/*
+/public/plugins/*
+/public/themes/*
+/public/uploads/*
+!/public/mu-plugins
+!/public/mu-plugins/.gitkeep
+!/public/plugins
+!/public/plugins/.gitkeep
+!/public/themes
+!/public/themes/.gitkeep
+!/public/uploads
+!/public/uploads/.gitkeep
+!/public/index.php
+!/public/wp-config.php
+
+# Application
+# ----------------
+
+#~ !/public/mu-plugins/foundation/
+#~ !/public/mu-plugins/*.php
+#~ !/public/themes/nineteenseventy/
+
+# Logs
+# ----------------
+
+*.log
+
+# Dotenv
+# ----------------
+
+.env
+.env.*
+!.env.example
+
+# WP-CLI
+# ----------------
+
+/.wp-cli
+wp-cli.local.yml
+
+# Development
+# ----------------
+
+/phpcs.xml
+/phpunit.xml
+
+# Package Managers
+# ----------------
+
+/node_modules
+/vendor
+
+# Project Managers
+# ----------------
+
+/.idea
+/.nova
+/.vagrant

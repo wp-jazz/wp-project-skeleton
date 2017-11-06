@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+  - nightly
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - composer install -o --prefer-dist --no-interaction
+
+script:
+  - composer test

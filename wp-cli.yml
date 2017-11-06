@@ -1,0 +1,8 @@
+path: public/wordpress
+
+server:
+  docroot: public
+
+disabled_commands:
+  - core download
+  - core config
