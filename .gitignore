@@ -2,32 +2,34 @@
 # ----------------
 
 /public/*
-/public/mu-plugins/*
-/public/plugins/*
-/public/themes/*
-/public/uploads/*
-!/public/mu-plugins
-!/public/mu-plugins/.gitkeep
-!/public/plugins
-!/public/plugins/.gitkeep
-!/public/themes
-!/public/themes/.gitkeep
-!/public/uploads
-!/public/uploads/.gitkeep
 !/public/index.php
 !/public/wp-config.php
+
+!/public/mu-plugins
+/public/mu-plugins/*/
+
+!/public/plugins
+/public/plugins/*/
+
+!/public/themes
+/public/themes/*/
+
+!/public/uploads
+/public/uploads/*
+!/public/uploads/.gitkeep
 
 # Application
 # ----------------
 
-#~ !/public/mu-plugins/foundation/
-#~ !/public/mu-plugins/*.php
-#~ !/public/themes/nineteenseventy/
+#~ !/public/wp-ajax.php
+#~ !/public/mu-plugins/foo
+#~ !/public/themes/qux
 
-# Logs
+# WP-CLI
 # ----------------
 
-*.log
+.wp-cli
+wp-cli.local.yml
 
 # Dotenv
 # ----------------
@@ -36,17 +38,19 @@
 .env.*
 !.env.example
 
-# WP-CLI
-# ----------------
-
-/.wp-cli
-wp-cli.local.yml
-
 # Development
 # ----------------
 
-/phpcs.xml
-/phpunit.xml
+.phplint-cache
+.phpcs.xml
+.phpunit.xml
+phpcs.xml
+phpunit.xml
+
+# Logs
+# ----------------
+
+*.log
 
 # Package Managers
 # ----------------

@@ -3,13 +3,17 @@
 /**
  * File: Development Configurations
  *
- * Configuration overrides for WP_ENV === 'development'
+ * Configuration overrides for WP_ENVIRONMENT_TYPE === 'development'
  */
 
 use Roots\WPConfig\Config;
 
 // Enable plugin and theme updates and installation from the admin
 Config::define( 'DISALLOW_FILE_MODS', false );
+
+// Disable all post revisions and autosave
+Config::define( 'AUTOSAVE_INTERVAL', false );
+Config::define( 'WP_POST_REVISIONS', false );
 
 /**
  * Debugging Settings

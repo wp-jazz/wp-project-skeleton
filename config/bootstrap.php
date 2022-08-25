@@ -11,17 +11,14 @@
 use Dotenv\Dotenv;
 use Roots\WPConfig\Config;
 
-use const Jazz\APP_BASE_PATH;
+use function Env\env;
 
-/**
- * Expose global env() function from oscarotero/env
- */
-Env::init();
+use const Jazz\APP_BASE_PATH;
 
 /**
  * Use Dotenv to set required environment variables and load .env file in root
  */
-$dotenv = Dotenv::createImmutable( APP_BASE_PATH );
+$dotenv = Dotenv::createUnsafeImmutable( APP_BASE_PATH );
 if ( file_exists( APP_BASE_PATH . '/.env' ) ) {
     $dotenv->load();
     $dotenv->required( [
@@ -39,10 +36,13 @@ if ( file_exists( APP_BASE_PATH . '/.env' ) ) {
 }
 
 /**
- * Set up our global environment constant and load its config first
+ * Set up our global environment constant and load its config first.
+ * The `WP_ENV` constant is required by certain plugins from Roots
+ * for Bedrock.
  * Default: production
  */
-define( 'WP_ENV', env( 'WP_ENV' ) ?: 'production' );
+define( 'WP_ENVIRONMENT_TYPE', ( env( 'WP_ENVIRONMENT_TYPE' ) ?? 'production' ) );
+define( 'WP_ENV', ( env( 'WP_ENV' ) ?? WP_ENVIRONMENT_TYPE ) );
 
 /**
  * Set up the project's config, then WordPress' config, then the environment.
@@ -50,7 +50,7 @@ define( 'WP_ENV', env( 'WP_ENV' ) ?: 'production' );
 require_once __DIR__ . '/application.php';
 require_once __DIR__ . '/wordpress.php';
 
-$env_conf = __DIR__ . '/environments/' . WP_ENV . '.php';
+$env_conf = __DIR__ . '/environments/' . WP_ENVIRONMENT_TYPE . '.php';
 if ( file_exists( $env_conf ) ) {
     require_once $env_conf;
 }

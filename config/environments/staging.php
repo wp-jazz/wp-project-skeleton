@@ -3,7 +3,7 @@
 /**
  * File: Staging Configurations
  *
- * Configuration overrides for WP_ENV === 'staging'
+ * Configuration overrides for WP_ENVIRONMENT_TYPE === 'staging'
  */
 
 use Roots\WPConfig\Config;

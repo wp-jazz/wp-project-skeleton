@@ -2,16 +2,19 @@
 
 root = true
 
-[*]
+[/{*,.github/**}]
 charset = utf-8
 end_of_line = lf
+insert_final_newline = true
 indent_size = 2
 indent_style = space
-insert_final_newline = true
 trim_trailing_whitespace = true
 
-[{composer.*,config/**.php,public/*.php}]
+[/*.md]
+trim_trailing_whitespace = false
+
+[/{config/**.php,public/*.php}]
 indent_size = 4
 
-[*.md]
-trim_trailing_whitespace = false
+[/{composer.*,*.xml,*.xml.dist}]
+indent_size = 4

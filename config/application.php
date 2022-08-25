@@ -4,7 +4,7 @@
  * File: Production configuration for your WordPress application
  *
  * Your base production configuration goes in this file. Environment-specific
- * overrides go in their respective config/environments/{{WP_ENV}}.php file.
+ * overrides go in their respective config/environments/{{WP_ENVIRONMENT_TYPE}}.php file.
  *
  * A good default policy is to deviate from the production config as little as
  * possible. Try to define as much of your configuration in this file as you can.
@@ -12,11 +12,13 @@
 
 use Roots\WPConfig\Config;
 
+use function Env\env;
+
 /**
  * Custom Settings
  */
 Config::define( 'AUTOMATIC_UPDATER_DISABLED', true );
-Config::define( 'DISABLE_WP_CRON', env( 'DISABLE_WP_CRON' ) ?: false );
+Config::define( 'DISABLE_WP_CRON', ( env( 'DISABLE_WP_CRON' ) ?? false ) );
 
 // Disable the plugin and theme file editor in the admin
 Config::define( 'DISALLOW_FILE_EDIT', true );
@@ -24,11 +26,14 @@ Config::define( 'DISALLOW_FILE_EDIT', true );
 // Disable plugin and theme updates and installation from the admin
 Config::define( 'DISALLOW_FILE_MODS', true );
 
+// Disallow indexing of your site
+Config::define( 'DISALLOW_INDEXING', ( env( 'DISALLOW_INDEXING' ) ?? ( WP_ENVIRONMENT_TYPE !== 'production' ) ) );
+
 /**
  * Debugging Settings
  */
 Config::define( 'WP_DEBUG_DISPLAY', false );
-Config::define( 'WP_DEBUG_LOG', env( 'WP_DEBUG_LOG' ) ?: false );
+Config::define( 'WP_DEBUG_LOG', ( env( 'WP_DEBUG_LOG' ) ?? false ) );
 Config::define( 'SCRIPT_DEBUG', false );
 
 ini_set( 'display_errors', '0' );

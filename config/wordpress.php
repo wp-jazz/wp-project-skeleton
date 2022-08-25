@@ -1,12 +1,14 @@
 <?php
 
 /**
- * File: Internal configuration for WordPress
+ * File: Base configuration for WordPress
  *
  * This file is the equivalent of a classic wp-config.php.
  */
 
 use Roots\WPConfig\Config;
+
+use function Env\env;
 
 use const Jazz\APP_PUBLIC_PATH;
 
@@ -28,20 +30,20 @@ Config::define( 'WP_CONTENT_URL', Config::get( 'WP_HOME' ) );
 Config::define( 'DB_NAME',     env( 'DB_NAME' ) );
 Config::define( 'DB_USER',     env( 'DB_USER' ) );
 Config::define( 'DB_PASSWORD', env( 'DB_PASSWORD' ) );
-Config::define( 'DB_HOST',     env( 'DB_HOST' ) ?: 'localhost' );
-Config::define( 'DB_CHARSET',  env( 'DB_CHARSET' ) ?: 'utf8mb4' );
-Config::define( 'DB_COLLATE',  env( 'DB_COLLATE' ) ?: '' );
-Config::define( 'DB_PREFIX',   env( 'DB_PREFIX' ) ?: 'wp_' );
+Config::define( 'DB_HOST',     ( env( 'DB_HOST' ) ?? 'localhost' ) );
+Config::define( 'DB_CHARSET',  ( env( 'DB_CHARSET' ) ?? 'utf8mb4' ) );
+Config::define( 'DB_COLLATE',  ( env( 'DB_COLLATE' ) ?? '' ) );
+Config::define( 'DB_PREFIX',   ( env( 'DB_PREFIX' ) ?? 'wp_' ) );
 
 $table_prefix = Config::get( 'DB_PREFIX' );
 
 if ( env( 'DATABASE_URL' ) ) {
     $dsn = (object) parse_url( env( 'DATABASE_URL' ) );
 
-    Config::define( 'DB_NAME', substr( $dsn->path, 1 ) );
-    Config::define( 'DB_USER', $dsn->user );
-    Config::define( 'DB_PASSWORD', $dsn->pass ?? null );
-    Config::define( 'DB_HOST', isset( $dsn->port ) ? "{$dsn->host}:{$dsn->port}" : $dsn->host );
+    Config::define( 'DB_NAME',     substr( $dsn->path, 1 ) );
+    Config::define( 'DB_USER',     $dsn->user );
+    Config::define( 'DB_PASSWORD', $dsn?->pass );
+    Config::define( 'DB_HOST',     ( isset( $dsn->port ) ? "{$dsn->host}:{$dsn->port}" : $dsn->host ) );
 }
 
 /**
