@@ -21,12 +21,7 @@
     <exclude-pattern>node_modules</exclude-pattern>
     <exclude-pattern>vendor</exclude-pattern>
 
-    <!-- Use Neutron + WPCS as a base -->
-    <rule ref="NeutronRuleset">
-        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
-        <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
-    </rule>
-
+    <!-- Use WPCS as a base -->
     <rule ref="WordPress.WP.DeprecatedFunctions">
         <properties>
             <property name="minimum_supported_version" value="6.0" />

@@ -3,7 +3,7 @@
 /**
  * File: Development Configurations
  *
- * Configuration overrides for WP_ENVIRONMENT_TYPE === 'development'
+ * Configuration overrides for `WP_ENVIRONMENT_TYPE === 'development'`
  */
 
 use Roots\WPConfig\Config;

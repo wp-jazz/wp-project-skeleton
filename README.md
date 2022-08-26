@@ -37,6 +37,9 @@ Differences with Bedrock:
   * `Jazz\APP_BASE_PATH` — Path to the project directory.
   * `Jazz\APP_CONFIG_PATH` — Path to the project configuration directory.
   * `Jazz\APP_VENDOR_PATH` — Path to the Composer dependencies directory.
+  * `Jazz\WP_BASE_DIRNAME` — Name of to the WordPress core directory.
+  * `Jazz\WP_BASE_PATH` — Absolute path to the WordPress core directory
+    (without a trailing slash).
 
 ## Requirements
 

@@ -2,6 +2,7 @@
 
 root = true
 
+# Jazz
 [/{*,.github/**}]
 charset = utf-8
 end_of_line = lf
@@ -13,8 +14,14 @@ trim_trailing_whitespace = true
 [/*.md]
 trim_trailing_whitespace = false
 
-[/{config/**.php,public/*.php}]
-indent_size = 4
-
 [/{composer.*,*.xml,*.xml.dist}]
 indent_size = 4
+
+# WordPress
+# See: https://core.trac.wordpress.org/browser/trunk/.editorconfig
+[/{config/**,public/*}]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab

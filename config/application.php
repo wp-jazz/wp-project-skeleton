@@ -1,13 +1,16 @@
 <?php
 
 /**
- * File: Production configuration for your WordPress application
+ * File: Production Configurations
  *
- * Your base production configuration goes in this file. Environment-specific
- * overrides go in their respective config/environments/{{WP_ENVIRONMENT_TYPE}}.php file.
+ * Your base production configuration goes in this file.
  *
- * A good default policy is to deviate from the production config as little as
- * possible. Try to define as much of your configuration in this file as you can.
+ * Environment-specific overrides go in their respective
+ * `config/environments/{{WP_ENVIRONMENT_TYPE}}.php` file.
+ *
+ * A good default policy is to deviate from the production config
+ * as little as possible. Try to define as much of your configuration
+ * in this file as you can.
  */
 
 use Roots\WPConfig\Config;
@@ -42,7 +45,7 @@ ini_set( 'display_errors', '0' );
  * Prevent issues with PHP's CLI environement
  */
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-    $_SERVER['HTTP_HOST'] = 'host.local';
+	$_SERVER['HTTP_HOST'] = 'host.local';
 }
 
 /**
@@ -50,5 +53,5 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
  * See https://codex.wordpress.org/Function_Reference/is_ssl#Notes
  */
 if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
-    $_SERVER['HTTPS'] = 'on';
+	$_SERVER['HTTPS'] = 'on';
 }

@@ -3,7 +3,9 @@
 /**
  * File: Base configuration for WordPress
  *
- * This file is the equivalent of a classic wp-config.php.
+ * This file is the equivalent of a classic `wp-config.php`.
+ *
+ * Application-specific overrides should go in `config/application.php`.
  */
 
 use Roots\WPConfig\Config;
@@ -11,6 +13,7 @@ use Roots\WPConfig\Config;
 use function Env\env;
 
 use const Jazz\APP_PUBLIC_PATH;
+use const Jazz\WP_BASE_PATH;
 
 /**
  * URLs
@@ -38,12 +41,12 @@ Config::define( 'DB_PREFIX',   ( env( 'DB_PREFIX' ) ?? 'wp_' ) );
 $table_prefix = Config::get( 'DB_PREFIX' );
 
 if ( env( 'DATABASE_URL' ) ) {
-    $dsn = (object) parse_url( env( 'DATABASE_URL' ) );
+	$dsn = (object) parse_url( env( 'DATABASE_URL' ) );
 
-    Config::define( 'DB_NAME',     substr( $dsn->path, 1 ) );
-    Config::define( 'DB_USER',     $dsn->user );
-    Config::define( 'DB_PASSWORD', $dsn?->pass );
-    Config::define( 'DB_HOST',     ( isset( $dsn->port ) ? "{$dsn->host}:{$dsn->port}" : $dsn->host ) );
+	Config::define( 'DB_NAME',     substr( $dsn->path, 1 ) );
+	Config::define( 'DB_USER',     $dsn->user );
+	Config::define( 'DB_PASSWORD', ( $dsn->pass ?? null ) );
+	Config::define( 'DB_HOST',     ( isset( $dsn->port ) ? "{$dsn->host}:{$dsn->port}" : $dsn->host ) );
 }
 
 /**
