@@ -12,12 +12,11 @@
     <arg value="ns"/>
 
     <!-- Scan all files in directory -->
-    <file>config</file>
-    <file>public/index.php</file>
-    <file>public/wp-config.php</file>
+    <file>.</file>
 
     <!-- Ignore WordPress and Composer dependencies -->
     <exclude-pattern>public/wordpress</exclude-pattern>
+    <exclude-pattern>public/themes/twentytwentytwo/</exclude-pattern>
     <exclude-pattern>node_modules</exclude-pattern>
     <exclude-pattern>vendor</exclude-pattern>
 
