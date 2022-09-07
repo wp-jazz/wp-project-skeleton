@@ -2,7 +2,7 @@
 
 root = true
 
-# Jazz
+# Jazz Coding Standards
 [/{*,.github/**}]
 charset = utf-8
 end_of_line = lf
@@ -17,7 +17,7 @@ trim_trailing_whitespace = false
 [/{composer.*,*.xml,*.xml.dist}]
 indent_size = 4
 
-# WordPress
+# WordPress Coding Standards
 # See: https://core.trac.wordpress.org/browser/trunk/.editorconfig
 [/{config/**,public/*}]
 charset = utf-8

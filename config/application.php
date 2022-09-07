@@ -20,7 +20,10 @@ use function Env\env;
 /**
  * Custom Settings
  */
+// Disable all automatic updates since WP is managed by Composer
 Config::define( 'AUTOMATIC_UPDATER_DISABLED', true );
+
+// Allow environment variable to control WP-Cron
 Config::define( 'DISABLE_WP_CRON', ( env( 'DISABLE_WP_CRON' ) ?? false ) );
 
 // Disable the plugin and theme file editor in the admin
