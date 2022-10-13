@@ -51,7 +51,7 @@ Differences with Bedrock:
 1. Create a new project:
 
     ```shell
-    composer create-project mcaskill/wp-jazz
+    composer create-project wp-jazz/wp-project-skeleton
     ```
 
 2. Update environment variables in the `.env` file.
@@ -85,7 +85,7 @@ Differences with Bedrock:
 
 <!-- ## Documentation -->
 
-<!-- Jazz documentation is available at the repository's [GitHub Wiki](https://github.com/mcaskill/wp-jazz/wiki). -->
+<!-- Jazz documentation is available at the repository's [GitHub Wiki](https://github.com/wp-jazz/wp-project-skeleton/wiki). -->
 
 ## Contributing
 

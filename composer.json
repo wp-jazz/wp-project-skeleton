@@ -1,6 +1,6 @@
 {
     "type": "project",
-    "name": "mcaskill/wp-jazz",
+    "name": "wp-jazz/wp-project-skeleton",
     "description": "A modern WordPress project boilerplate.",
     "license": "MIT",
     "keywords": [
@@ -12,16 +12,9 @@
         "boilerplate"
     ],
     "support": {
-        "source": "https://github.com/mcaskill/wp-jazz",
-        "issues": "https://github.com/mcaskill/wp-jazz/issues"
+        "source": "https://github.com/wp-jazz/wp-project-skeleton",
+        "issues": "https://github.com/wp-jazz/wp-project-skeleton/issues"
     },
-    "authors": [
-        {
-            "name": "Chauncey McAskill",
-            "email": "chauncey@mcaskill.ca",
-            "homepage": "https://mcaskill.ca"
-        }
-    ],
     "require": {
         "php": ">=7.4",
         "composer/installers": "^2.1",
