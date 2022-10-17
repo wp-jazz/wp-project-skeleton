@@ -31,7 +31,7 @@
         "roots/wordpress": "^6.0.2",
         "roots/wp-config": "^1.0.0",
         "roots/wp-password-bcrypt": "^1.1.0",
-        "vlucas/phpdotenv": "^5.4",
+        "vlucas/phpdotenv": "^5.5",
         "wpackagist-theme/twentytwentytwo": "^1.2"
     },
     "require-dev": {
