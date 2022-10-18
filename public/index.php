@@ -11,7 +11,7 @@
  * @package WordPress
  */
 
-/** @var bool Tells WordPress to load the WordPress theme and output it. */
+/** Tells WordPress to load the WordPress theme and output it. */
 define( 'WP_USE_THEMES', true );
 
 /** Loads the WordPress Environment and Template */

@@ -1,35 +1,36 @@
 <?xml version="1.0"?>
-<ruleset name="Jazz">
-    <description>Jazz Coding Standards</description>
+<ruleset name="Jazz Project Skeleton">
+	<!-- Scan only project skeleton files -->
+	<file>config/</file>
+	<file>public/mu-plugins/</file>
+	<file>public/index.php</file>
+	<file>public/wp-config.php</file>
 
-    <!-- Scan only PHP files -->
-    <arg name="extensions" value="php"/>
+	<exclude-pattern>public/mu-plugins/*/</exclude-pattern>
 
-    <!-- Show colors in console -->
-    <arg value="-colors"/>
+	<!-- Ignoring warnings when generating the exit code. -->
+	<config name="ignore_warnings_on_exit" value="1" />
 
-    <!-- Show sniff codes in all reports -->
-    <arg value="ns"/>
+	<!-- Check for cross-version support for PHP 7.4 and higher. -->
+	<config name="testVersion" value="7.4-" />
 
-    <!-- Scan all files in directory -->
-    <file>.</file>
+	<!-- Use Jazz as a base -->
+	<rule ref="Jazz" />
 
-    <!-- Ignore WordPress and Composer dependencies -->
-    <exclude-pattern>public/wordpress</exclude-pattern>
-    <exclude-pattern>public/themes/twentytwentytwo/</exclude-pattern>
-    <exclude-pattern>node_modules</exclude-pattern>
-    <exclude-pattern>vendor</exclude-pattern>
+	<rule ref="WordPress.WP.DeprecatedFunctions">
+		<properties>
+			<property name="minimum_supported_version" value="6.0" />
+		</properties>
+	</rule>
 
-    <!-- Use WPCS as a base -->
-    <rule ref="WordPress.WP.DeprecatedFunctions">
-        <properties>
-            <property name="minimum_supported_version" value="6.0" />
-        </properties>
-    </rule>
+	<rule ref="HM.Files">
+		<exclude-pattern>public/mu-plugins/</exclude-pattern>
+	</rule>
 
-    <rule ref="WordPress.NamingConventions.ValidHookName">
-        <properties>
-            <property name="additionalWordDelimiters" value="-/" />
-        </properties>
-    </rule>
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+		<exclude-pattern>config/*</exclude-pattern>
+		<exclude-pattern>public/mu-plugins/</exclude-pattern>
+		<exclude-pattern>public/index.php</exclude-pattern>
+		<exclude-pattern>public/wp-config.php</exclude-pattern>
+	</rule>
 </ruleset>

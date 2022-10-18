@@ -1,9 +1,9 @@
 <?php
 
 /**
- * File: Staging Configurations
+ * Configuration File: Staging
  *
- * Configuration overrides for `WP_ENVIRONMENT_TYPE === 'staging'`
+ * Overrides for `WP_ENVIRONMENT_TYPE === 'staging'`
  */
 
 /**

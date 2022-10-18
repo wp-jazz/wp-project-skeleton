@@ -1,83 +1,100 @@
 {
-    "type": "project",
-    "name": "wp-jazz/wp-project-skeleton",
-    "description": "A modern WordPress project boilerplate.",
-    "license": "MIT",
-    "keywords": [
-        "jazz",
-        "composer",
-        "wordpress",
-        "wp",
-        "wp-config",
-        "boilerplate"
-    ],
-    "support": {
-        "source": "https://github.com/wp-jazz/wp-project-skeleton",
-        "issues": "https://github.com/wp-jazz/wp-project-skeleton/issues"
-    },
-    "require": {
-        "php": ">=7.4",
-        "composer/installers": "^2.1",
-        "oscarotero/env": "^2.1",
-        "roots/bedrock-autoloader": "^1.0",
-        "roots/bedrock-disallow-indexing": "^2.0",
-        "roots/wordpress": "^6.0.2",
-        "roots/wp-config": "^1.0.0",
-        "roots/wp-password-bcrypt": "^1.1.0",
-        "vlucas/phpdotenv": "^5.4",
-        "wpackagist-theme/twentytwentytwo": "^1.2"
-    },
-    "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-        "roave/security-advisories": "dev-latest",
-        "squizlabs/php_codesniffer": "^3.7",
-        "wp-coding-standards/wpcs": "^2.3"
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://wpackagist.org",
-            "only": [
-                "wpackagist-plugin/*",
-                "wpackagist-theme/*"
-            ]
-        }
-    ],
-    "extra": {
-        "installer-paths": {
-            "public/mu-plugins/{$name}/": [
-                "type:wordpress-muplugin"
-            ],
-            "public/plugins/{$name}/": [
-                "type:wordpress-plugin"
-            ],
-            "public/themes/{$name}/": [
-                "type:wordpress-theme"
-            ],
-            "public/{$name}/": [
-                "type:wordpress-dropin"
-            ]
-        },
-        "wordpress-install-dir": "public/wordpress"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "preferred-install": "dist",
-        "optimize-autoloader": true,
-        "sort-packages": true,
-        "allow-plugins": {
-            "composer/installers": true,
-            "roots/wordpress-core-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "lint": [
-            "phpcs"
-        ]
-    }
+	"type": "project",
+	"name": "wp-jazz/wp-project-skeleton",
+	"description": "A modern WordPress project boilerplate.",
+	"license": "MIT",
+	"keywords": [
+		"jazz",
+		"composer",
+		"wordpress",
+		"wp",
+		"wp-config",
+		"boilerplate"
+	],
+	"require": {
+		"php": ">=7.4",
+		"composer/installers": "^2.1",
+		"oscarotero/env": "^2.1",
+		"roots/bedrock-autoloader": "^1.0",
+		"roots/bedrock-disallow-indexing": "^2.0",
+		"roots/wordpress": "^6.0.3",
+		"roots/wp-config": "^1.0.0",
+		"roots/wp-password-bcrypt": "^1.1.0",
+		"vlucas/phpdotenv": "^5.5",
+		"wpackagist-theme/twentytwentytwo": "^1.2"
+	},
+	"require-dev": {
+		"roave/security-advisories": "dev-latest",
+		"wp-jazz/coding-standards": "^1"
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [
+				"wpackagist-plugin/*",
+				"wpackagist-theme/*"
+			]
+		}
+	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"roots/wordpress-core-installer": true
+		},
+		"preferred-install": "dist",
+		"optimize-autoloader": true,
+		"sort-packages": true
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-main": "1.x-dev"
+		},
+		"installer-paths": {
+			"public/mu-plugins/{$name}/": [
+				"type:wordpress-muplugin"
+			],
+			"public/plugins/{$name}/": [
+				"type:wordpress-plugin"
+			],
+			"public/themes/{$name}/": [
+				"type:wordpress-theme"
+			],
+			"public/{$name}/": [
+				"type:wordpress-dropin"
+			]
+		},
+		"wordpress-install-dir": "public/wordpress"
+	},
+	"scripts": {
+		"post-root-package-install": [
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+		],
+		"post-install-cmd": [
+			"@fix:wp-stubs"
+		],
+		"post-update-cmd": [
+			"@fix:wp-stubs"
+		],
+		"fix:wp-stubs": [
+			"bin/fix-wp-stubs.sh"
+		],
+		"lint": [
+			"@lint:phpcs",
+			"@lint:phpstan",
+			"@lint:psalm"
+		],
+		"lint:phpcs": [
+			"phpcs -ps --colors"
+		],
+		"lint:phpstan": [
+			"phpstan analyze"
+		],
+		"lint:psalm": [
+			"psalm"
+		]
+	}
 }

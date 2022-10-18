@@ -3,6 +3,9 @@ path: public/wordpress
 server:
   docroot: public
 
+require:
+  - vendor/autoload.php
+
 disabled_commands:
   - core download
   - core config

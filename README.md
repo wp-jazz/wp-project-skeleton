@@ -1,15 +1,17 @@
-# 🎷 Jazz — A modern WordPress boilerplate
+# WordPress Project Skeleton
 
-Yet another modern WordPress boilerplate with Composer, an easier configuration,
-and an improved folder structure.
+Yet another modern WordPress boilerplate with Composer,
+an easier configuration, and an improved directory structure.
 
 > This boilerplate is based on [Bedrock][roots/bedrock].
 >
-> If you have the capability, please consider [sponsoring Roots](https://github.com/sponsors/roots).
+> If you have the capability, please consider
+> [sponsoring Roots](https://github.com/sponsors/roots).
 
 ## Overview
 
-This boilerplate assumes you are familiar with [Bedrock](https://docs.roots.io/bedrock/master/installation/).
+This boilerplate assumes you are familiar with
+[Bedrock](https://docs.roots.io/bedrock/master/installation/).
 
 Differences with Bedrock:
 
@@ -18,7 +20,7 @@ Differences with Bedrock:
 * The _WordPress content directory_ is the same path as the Web root.
   * In vanilla WordPress, this is the `/wp-content` directory.
   * In Bedrock, this is the `/web/app` directory.
-  * Simplified folder structure in Jazz:
+  * In Jazz, the directory structure is simplified:
     * `/public/plugins`
     * `/public/mu-plugins`
     * `/public/themes`
@@ -32,14 +34,6 @@ Differences with Bedrock:
   * `/config/wordpress.php` — Base configuration for WordPress (equivalent of `wp-config.php`).
 * Roots' `WP_ENV` constant is superseded by WordPress' `WP_ENVIRONMENT_TYPE` constant.
   * The former is still defined because its required by dependencies and plugins by Roots.
-* Jazz namespaced constants for the project structure:
-  * `Jazz\APP_PUBLIC_PATH` — Path to the public web directory.
-  * `Jazz\APP_BASE_PATH` — Path to the project directory.
-  * `Jazz\APP_CONFIG_PATH` — Path to the project configuration directory.
-  * `Jazz\APP_VENDOR_PATH` — Path to the Composer dependencies directory.
-  * `Jazz\WP_BASE_DIRNAME` — Name of to the WordPress core directory.
-  * `Jazz\WP_BASE_PATH` — Absolute path to the WordPress core directory
-    (without a trailing slash).
 
 ## Requirements
 
@@ -71,16 +65,21 @@ Differences with Bedrock:
         DATABASE_URL="mysql://user:password@127.0.0.1:3306/db_name"
         ```
 
-    * `WP_ENVIRONMENT_TYPE` — Set to environment (`development`, `staging`, `production`)
+    * `WP_ENVIRONMENT_TYPE` — Set to environment 
+      (`development`, `staging`, `production`)
     * `WP_HOME` — Full URL to WordPress home (https://example.com)
     * `WP_SITEURL` — Full URL to WordPress including subdirectory (https://example.com/wordpress)
-    * `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`
+    * `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, 
+      `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`
       * Generate with [wp-cli-dotenv-command]
       * Generate with [our WordPress salts generator][roots/salts]
-3. Add plugin(s) in `public/plugins` and `public/mu-plugins`, and theme(s) in `public/themes` either:
-    * as you would for a normal WordPress site (add an exception to the `.gitignore` if you want to index them)
+3. Add plugin(s) in `public/plugins` and `public/mu-plugins`, 
+   and theme(s) in `public/themes` either:
+    * as you would for a normal WordPress site (add an exception to the 
+      `.gitignore` if you want to index them)
     * or as Composer dependencies.
-4. Set the document root on your Web server to Jazz's `public` folder: `/path/to/site/public/`.
+4. Set the document root on your Web server to the `public` directory: 
+   `/path/to/site/public/`.
 5. Access WordPress admin at `https://example.com/wordpress/wp-admin/`.
 
 <!-- ## Documentation -->
@@ -89,7 +88,9 @@ Differences with Bedrock:
 
 ## Contributing
 
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
+Contributions are welcome from everyone. 
+We have [contributing guidelines](https://github.com/wp-jazz/.github/blob/main/CONTRIBUTING.md) 
+to help you get started.
 
 ## Acknowledgements
 
@@ -103,6 +104,10 @@ This boilerplate is based on the solid work of many that have come before me, in
 * [mrgrain/autobahn]
 * [Themosis][themosis]
 * [WordPlate][wordplate]
+
+---
+
+<p align="center">🎷</p>
 
 [altis]:                          https://www.altis-dxp.com
 [assely]:                         https://github.com/assely

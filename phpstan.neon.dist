@@ -1,0 +1,15 @@
+includes:
+  - phpstan-baseline.neon
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+  level: max
+  paths:
+    - config/
+    - public/mu-plugins/
+    - public/index.php
+    - public/wp-config.php
+  excludePaths:
+    - public/mu-plugins/*/
+  dynamicConstantNames:
+    - WP_ENVIRONMENT_TYPE

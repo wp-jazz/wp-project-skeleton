@@ -2,26 +2,20 @@
 
 root = true
 
-# Jazz Coding Standards
-[/{*,.github/**}]
+[/{*,.github/**,bin/**,config/**,public/*,public/mu-plugins/*}]
 charset = utf-8
 end_of_line = lf
+indent_style = tab
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+[/{*,.github/**}.{md,neon,neon.dist,yml}]
 indent_size = 2
 indent_style = space
-trim_trailing_whitespace = true
 
-[/*.md]
+[/{*,.github/**}.md]
 trim_trailing_whitespace = false
 
-[/{composer.*,*.xml,*.xml.dist}]
+[/composer.lock]
 indent_size = 4
-
-# WordPress Coding Standards
-# See: https://core.trac.wordpress.org/browser/trunk/.editorconfig
-[/{config/**,public/*,public/mu-plugins/*}]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
-indent_style = tab
+indent_style = space

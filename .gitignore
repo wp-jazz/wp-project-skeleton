@@ -41,11 +41,10 @@ wp-cli.local.yml
 # Development
 # ----------------
 
-.phplint-cache
-.phpcs.xml
-.phpunit.xml
 phpcs.xml
+phpstan.neon
 phpunit.xml
+psalm.xml
 
 # Logs
 # ----------------

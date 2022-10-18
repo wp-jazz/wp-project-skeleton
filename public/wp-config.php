@@ -11,108 +11,38 @@
  * for `wp-config.php`.
  */
 
-use Dotenv\Dotenv;
-use Roots\WPConfig\Config;
-
-use function Env\env;
-
-/** Absolute path to the public document root directory. */
-define( 'Jazz\\APP_PUBLIC_PATH', __DIR__ );
-
-/** Absolute path to the project root directory. */
-define( 'Jazz\\APP_BASE_PATH', dirname( __DIR__ ) );
-
-/** Absolute path to the project configuration directory. */
-define( 'Jazz\\APP_CONFIG_PATH', Jazz\APP_BASE_PATH . '/config' );
-
-/** Absolute path to the Composer vendor directory. */
-define( 'Jazz\\APP_VENDOR_PATH', Jazz\APP_BASE_PATH . '/vendor' );
-
-/** Name of to the WordPress core directory. */
-define( 'Jazz\\WP_BASE_DIRNAME', 'wordpress' );
-
-/** Absolute path to the WordPress core directory. Without a trailing slash. */
-define( 'Jazz\\WP_BASE_PATH', Jazz\APP_PUBLIC_PATH . '/' . Jazz\WP_BASE_DIRNAME );
-
-/** Absolute path to the WordPress directory. Contains a trailing slash. */
+/**
+ * Absolute path to the WordPress directory.
+ *
+ * Conditionally defined in case it was not defined earlier.
+ */
 if ( ! defined( 'ABSPATH' ) ) {
-    define( 'ABSPATH', WP_BASE_PATH . '/' );
+	define( 'ABSPATH', __DIR__ . '/wordpress/' );
 }
 
-/** Loads the WordPress Plugin API early to allow Composer dependencies to use hooks. */
-require_once Jazz\WP_BASE_PATH . '/wp-includes/plugin.php';
+/**
+ * Absolute path to the WordPress content directory.
+ *
+ * Repurposed as the project's Web root.
+ */
+define( 'WP_CONTENT_DIR', __DIR__ );
+
+/**
+ * Loads the WordPress Plugin API early to allow
+ * Composer dependencies to use hooks.
+ */
+require_once __DIR__ . '/wordpress/wp-includes/plugin.php';
 
 /** Registers the Composer autoloader. */
-require_once Jazz\APP_VENDOR_PATH . '/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+/** Sets up the configuration for WordPress, the project, and the environment. */
+require_once __DIR__ . '/../config/application.php';
 
 /**
- * Fires once the Composer autoloader has loaded.
- *
- * @fires action:jazz/bootstrap/autoloader_loaded
+ * Conditonally ignores WordPress settings if testing the project.
  */
-do_action( 'jazz/bootstrap/autoloader_loaded' );
-
-/**
- * Use Dotenv to set required environment variables and load .env file in root
- */
-$dotenv = Dotenv::createUnsafeImmutable( Jazz\APP_BASE_PATH );
-if ( file_exists( Jazz\APP_BASE_PATH . '/.env' ) ) {
-	$dotenv->load();
-	$dotenv->required( [
-		'WP_HOME',
-		'WP_SITEURL',
-	] );
-
-	if ( ! env( 'DATABASE_URL' ) ) {
-		$dotenv->required( [
-			'DB_NAME',
-			'DB_USER',
-			'DB_PASSWORD',
-		] );
-	}
+if ( ! getenv( 'WP_PHPUNIT__TESTS_CONFIG' ) ) {
+	/** Sets up WordPress vars and included files. */
+	require_once __DIR__ . '/wordpress/wp-settings.php';
 }
-
-/**
- * Set up our global environment constant and load its config first.
- *
- * Default: production
- */
-define( 'WP_ENVIRONMENT_TYPE', ( env( 'WP_ENVIRONMENT_TYPE' ) ?? 'production' ) );
-
-/** The `WP_ENV` constant is required by certain plugins from Roots for Bedrock. */
-define( 'WP_ENV', ( env( 'WP_ENV' ) ?? WP_ENVIRONMENT_TYPE ) );
-
-/**
- * Fires once the environment variables are loaded and
- * the environment type is determined.
- *
- * @fires action:jazz/bootstrap/environment_loaded
- */
-do_action( 'jazz/bootstrap/environment_loaded' );
-
-/**
- * Set up the project's config, then WordPress' config, then the environment.
- */
-require_once Jazz\APP_CONFIG_PATH . '/wordpress.php';
-require_once Jazz\APP_CONFIG_PATH . '/application.php';
-
-$env_conf = Jazz\APP_CONFIG_PATH . '/environments/' . WP_ENVIRONMENT_TYPE . '.php';
-if ( file_exists( $env_conf ) ) {
-	require_once $env_conf;
-}
-
-/**
- * Defines all constants and throw an exception if we are attempting to redefine a constant.
- */
-Config::apply();
-
-/**
- * Fires once the WordPress and application configuration files
- * are loaded.
- *
- * @fires action:jazz/bootstrap/config_loaded
- */
-do_action( 'jazz/bootstrap/config_loaded' );
-
-/** Sets up WordPress vars and included files. */
-require_once Jazz\WP_BASE_PATH . '/wp-settings.php';
