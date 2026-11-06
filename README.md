@@ -118,7 +118,6 @@ This boilerplate is based on the solid work of many that have come before me, in
 [mrgrain/autobahn]:               https://github.com/mrgrain/autobahn
 [roots/bedrock]:                  https://github.com/roots/bedrock
 [roots/salts]:                    https://roots.io/salts.html
-[roots/wp-password-bcrypt]:       https://github.com/roots/wp-password-bcrypt
 [themosis]:                       https://framework.themosis.com
 [vlucas/phpdotenv]:               https://github.com/vlucas/phpdotenv
 [wordplate]:                      https://github.com/wordplate
