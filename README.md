@@ -8,6 +8,13 @@ an easier configuration, and an improved directory structure.
 > If you have the capability, please consider
 > [sponsoring Roots](https://github.com/sponsors/roots).
 
+> [!WARNING]
+> This project is abandonned.
+>
+> As long as WordPress does not provide official Composer support,
+> a classic WordPress project structure is ultimately the simplest
+> and most portable solution.
+
 ## Overview
 
 This boilerplate assumes you are familiar with
